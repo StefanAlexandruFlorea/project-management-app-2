@@ -1,19 +1,13 @@
 package com.stefan.pma;
 
-import com.stefan.pma.entities.Employee;
-import com.stefan.pma.entities.Project;
-import com.stefan.pma.repository.EmployeeRepository;
-import com.stefan.pma.repository.ProjectRepository;
+import com.stefan.pma.dao.EmployeeRepository;
+import com.stefan.pma.dao.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.util.Arrays;
 
 @SpringBootApplication
-public class PmaApplication {
+public class ProjectManagementApplication {
 
 	@Autowired
 	ProjectRepository projRepo;
@@ -22,7 +16,7 @@ public class PmaApplication {
 	EmployeeRepository empRepo;
 
 	public static void main(String[] args) {
-		SpringApplication.run(PmaApplication.class, args);
+		SpringApplication.run(ProjectManagementApplication.class, args);
 
 	}
 

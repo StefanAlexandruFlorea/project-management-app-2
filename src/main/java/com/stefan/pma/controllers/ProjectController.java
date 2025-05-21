@@ -3,8 +3,8 @@ package com.stefan.pma.controllers;
 
 import com.stefan.pma.entities.Employee;
 import com.stefan.pma.entities.Project;
-import com.stefan.pma.repository.EmployeeRepository;
-import com.stefan.pma.repository.ProjectRepository;
+import com.stefan.pma.dao.EmployeeRepository;
+import com.stefan.pma.dao.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

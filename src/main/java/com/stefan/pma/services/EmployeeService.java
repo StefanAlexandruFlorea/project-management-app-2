@@ -1,10 +1,5 @@
 package com.stefan.pma.services;
 
-import com.stefan.pma.repository.EmployeeRepository;
-import org.hibernate.annotations.Comment;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service

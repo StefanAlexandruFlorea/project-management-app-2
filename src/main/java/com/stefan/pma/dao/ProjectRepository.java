@@ -1,4 +1,4 @@
-package com.stefan.pma.repository;
+package com.stefan.pma.dao;
 
 import com.stefan.pma.dto.ChartData;
 import com.stefan.pma.entities.Project;

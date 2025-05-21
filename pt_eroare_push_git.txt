@@ -1,7 +1,0 @@
-git config --global http.sslVerify false
-
-
-//disable doar local
-git config --local http.sslVerify false
-git push -u origin main
-

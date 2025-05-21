@@ -1,0 +1,27 @@
+user:postgres pass:password
+master user pass:password
+
+
+git config --global http.sslVerify false
+
+
+//disable doar local
+git config --local http.sslVerify false
+git push -u origin main
+
+//sau
+git config --local http.sslVerify true
+git config --global http.sslbackend schannel
+git config --global credential.helper manager 
+git push -u origin main
+
+
+//utile
+// sterge target folder si arhiveaza aplicatia .jar
+mvn clean install
+
+//run jar din cmd in target unde e jar-ul
+java -jar pma-0.0.1-SNAPSHOT.jar
+
+//stop app
+ctrl + c

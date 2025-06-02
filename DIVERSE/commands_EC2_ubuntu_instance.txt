@@ -1,0 +1,17 @@
+//comenzi pe instanta ubuntu   
+
+sudo apt update
+sudo apt install openjdk-17-jre-headless
+nano .bashrc // export jdbcurl=..., export dbuser=....
+source ~/.bashrc
+echo $jdbcurl
+echo $dbuser
+echo $dbpass
+history
+//comanda de pe local pt a duce jar de pe local pe instanta ubuntu de pe AWS/EC2
+scp -i C:\Users\Stefan\Downloads\pma-key-pair.pem pma-0.0.1-SNAPSHOT.jar ubuntu@34.227.227.198:/home/ubuntu
+
+//pe EC2/ubuntu
+java -jar pma-0.0.1-SNAPSHOT.jar
+
+

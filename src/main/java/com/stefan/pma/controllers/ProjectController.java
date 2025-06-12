@@ -5,6 +5,8 @@ import com.stefan.pma.entities.Employee;
 import com.stefan.pma.entities.Project;
 import com.stefan.pma.dao.EmployeeRepository;
 import com.stefan.pma.dao.ProjectRepository;
+import com.stefan.pma.services.EmployeeService;
+import com.stefan.pma.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,13 +20,13 @@ import java.util.List;
 @RequestMapping("/projects")
 public class ProjectController {
     @Autowired
-    ProjectRepository proRepo;
+    ProjectService projectService;
     @Autowired
-    EmployeeRepository empRepo;
+    EmployeeService employeeService;
 
     @GetMapping
     public String displayProjects(Model model){
-        List<Project> projects = proRepo.findAll();
+        List<Project> projects = projectService.getAll();
         model.addAttribute("projectsList", projects);
         return "projects/list-projects";
     }
@@ -32,7 +34,7 @@ public class ProjectController {
     @GetMapping("/new")
     public String displayProjectForm(Model model){
         Project aProject = new Project();
-        List<Employee> employees = empRepo.findAll();
+        List<Employee> employees = employeeService.getAll();
         model.addAttribute("project", aProject);
         model.addAttribute("allEmployees", employees);
         return "projects/new-project";
@@ -40,7 +42,7 @@ public class ProjectController {
 
     @PostMapping("/save")
     public String createProject(Project project, Model model){
-        proRepo.save(project);
+        projectService.save(project);
         return "redirect:/projects";
     }
 }

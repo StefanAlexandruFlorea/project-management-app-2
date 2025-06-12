@@ -7,6 +7,8 @@ import com.stefan.pma.dto.ChartData;
 import com.stefan.pma.entities.Project;
 import com.stefan.pma.dao.EmployeeRepository;
 import com.stefan.pma.dao.ProjectRepository;
+import com.stefan.pma.services.EmployeeService;
+import com.stefan.pma.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,25 +24,25 @@ public class HomeController {
     private String ver;
 
     @Autowired
-    ProjectRepository proRepo;
+    ProjectService projectService;
 
     @Autowired
-    EmployeeRepository empRepo;
+    EmployeeService employeeService;
 
     @GetMapping("/")
     public String showProjects(Model model) throws JsonProcessingException {
         model.addAttribute("versionNumber", ver);
 
-        List<Project> projectsList = proRepo.findAll();
+        List<Project> projectsList = projectService.getAll();
         model.addAttribute("projectsList", projectsList);
 
-        List<ChartData> projectData = proRepo.getProjectStatus();
+        List<ChartData> projectData = projectService.getProjectStatus();
         //convert projectData into json to use in javascript
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = objectMapper.writeValueAsString(projectData);
         model.addAttribute("projectStatusCnt", jsonString);
 
-        List<EmployeeProject> employeesProjectsCnt = empRepo.employeeProjects();
+        List<EmployeeProject> employeesProjectsCnt = employeeService.employeeProjects();
         model.addAttribute("employeesProjectsCnt", employeesProjectsCnt);
 
         return "main/home";

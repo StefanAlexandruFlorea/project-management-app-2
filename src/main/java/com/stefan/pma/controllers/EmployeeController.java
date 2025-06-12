@@ -2,6 +2,7 @@ package com.stefan.pma.controllers;
 
 import com.stefan.pma.entities.Employee;
 import com.stefan.pma.dao.EmployeeRepository;
+import com.stefan.pma.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +15,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
+
     @Autowired
-    EmployeeRepository empRepo;
+    EmployeeService empService;
 
     @GetMapping
     public String displayEmployees(Model model){
-        List<Employee> employees = empRepo.findAll();
+        List<Employee> employees = empService.getAll();
         model.addAttribute("employeesList", employees);
         return "employees/list-employees";
     }
@@ -32,7 +34,7 @@ public class EmployeeController {
 
     @PostMapping("/save")
     public String createEmployee(Employee employee){
-        empRepo.save(employee);
+        empService.save(employee);
         return "redirect:/employees/new";
     }
 }

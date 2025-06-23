@@ -1,5 +1,6 @@
 package com.stefan.pma.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Project {
     @JoinTable(name="project_employee",
         joinColumns=@JoinColumn(name="project_id"),
         inverseJoinColumns = @JoinColumn(name="employee_id"))
+    @JsonIgnore
     private List<Employee> employees;
 
 

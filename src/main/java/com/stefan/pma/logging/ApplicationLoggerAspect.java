@@ -20,28 +20,28 @@ public class ApplicationLoggerAspect {
 
     }
 
-    @Around("definePackagePointcuts()")
-    public Object logAround(ProceedingJoinPoint jp){
-
-        log.debug("\n ");
-        log.debug("***********Before Method Execution******** \n {}.{}() with arguments={}",
-                jp.getSignature().getDeclaringType(), jp.getSignature().getName(), Arrays.toString(jp.getArgs()));
-        log.debug("________________________________________________________ \n  ");
-
-        Object o = null;
-        try {
-            o = jp.proceed();
-        } catch (Throwable e) {
-            throw new RuntimeException(e);
-        }
-        log.debug("\n ");
-
-        log.debug("***********After Method Execution******** \n {}.{}() with arguments={}",
-                jp.getSignature().getDeclaringType(), jp.getSignature().getName(), Arrays.toString(jp.getArgs()));
-        log.debug("________________________________________________________ \n ");
-
-        return o;
-    }
+//    @Around("definePackagePointcuts()")
+//    public Object logAround(ProceedingJoinPoint jp){
+//
+//        log.debug("\n ");
+//        log.debug("***********Before Method Execution******** \n {}.{}() with arguments={}",
+//                jp.getSignature().getDeclaringType(), jp.getSignature().getName(), Arrays.toString(jp.getArgs()));
+//        log.debug("________________________________________________________ \n  ");
+//
+//        Object o = null;
+//        try {
+//            o = jp.proceed();
+//        } catch (Throwable e) {
+//            throw new RuntimeException(e);
+//        }
+//        log.debug("\n ");
+//
+//        log.debug("***********After Method Execution******** \n {}.{}() with arguments={}",
+//                jp.getSignature().getDeclaringType(), jp.getSignature().getName(), Arrays.toString(jp.getArgs()));
+//        log.debug("________________________________________________________ \n ");
+//
+//        return o;
+//    }
 
 //    @Before("definePackagePointcuts()")
 //    public void logBefore(JoinPoint jp){
